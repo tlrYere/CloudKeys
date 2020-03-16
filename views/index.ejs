@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<title>Cloud Keys</title>
+
+		<h1>Cloud Keys: A completely Cloud-based Password Manager</h1>
+
+		<b> Input New Password</b> <br>
+		Domain: <input type = "text" id = "domain_name_post"> <br>
+		Password: <input type = "text" id = "password_post"> <br>
+		<button id = "post_submit">Submit</button> <br>
+		<div id = "post_output"></div>
+		<br>
+
+		<b>Get Stored Password</b> <br>
+		Domain: <input type = "text" id = "domain_name_get"> <br>
+		<button id = "get_submit">Submit</button>
+		<div id = "get_output"></div>
+
+
+		<script type = "text/javascript">
+			$(document).ready(() => {
+				$("#post_submit").click(() => {
+					$.ajax({
+						cache: false,
+						url: '/process_post',
+						type: 'POST',
+						data: {
+							"Domain": $('#domain_name_post').val(),
+							"Password": $('#password_post').val()
+						},
+						success: (res) => {
+							console.log(res);
+							$('#post_output').html(res);
+						},
+						error: (xhr) => {
+							console.log(xhr);
+						}
+					});
+				});
+
+
+				$("#get_submit").click(() => {
+					$.ajax({
+						cache: false,
+						url: '/process_get',
+						type: 'GET',
+						data: {
+							"Domain": $('#domain_name_get').val()
+						},
+						success: (res) => {
+							console.log(res);
+							$("#get_output").html(res);
+						},
+						error: (xhr) => {
+							console.log(xhr);
+						}
+						});
+				});
+			});
+		</script>
+		<!-- old html
+		<form action = "http://127.0.0.1:9001/process_post" method = "POST">
+			<b>Input New Password</b> <br>
+			Domain: <input type = "text" name = "domain_name"> <br>
+			Password: <input type = "text" name = "password"> <br>
+			<input type = "submit" value = "Submit" id = "post_submit">
+		</form>
+
+		<form action = "http://127.0.0.1:9001/process_get" method = "GET">
+			<br>
+			<b>Get Stored Password</b> <br>
+			Domain: <input type = "text" name = "domain_name"> <br>
+			<input type = "submit" value = "Submit" id = "get_submit">
+		</form>-->
+	</body>
+</html>
