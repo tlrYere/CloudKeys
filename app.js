@@ -7,12 +7,6 @@ var fs = require('fs');
 //Create application/x-www-forn-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({extended: false})
 
-// original way to render webpage
-// app.use(express.static('public'));
-// app.get('/index.htm', (req, res) => {
-// 	res.sendFile(__dirname + "/" + "index.htm");
-// })
-
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.engine('.ejs', ejs);
@@ -31,8 +25,8 @@ app.post('/process_post', urlencodedParser, (req,res) => {
 		Password:req.body.Password
 	};
 	console.log(response);
+	
 	// write/update response in the "database"
-
 	var data = JSON.stringify(response);
 
 	fs.writeFileSync(__dirname + "/private/passwords/" + req.body.Domain + ".json", data);
@@ -51,7 +45,6 @@ app.get('/process_get', (req,res) => {
 				console.log(domainPasswordObject);
 
 				res.end(JSON.stringify(domainPasswordObject));
-				//res.send("Password for " + req.query.domain_name + ": " + domainPasswordObject.Password);
 			}
 		})
 		// if password not found, return this message
