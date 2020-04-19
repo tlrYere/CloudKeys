@@ -12,6 +12,8 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "@aws-crypto/client-browser": "^1.0.5",
+    "@aws-crypto/client-node": "^1.0.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "jquery": "^3.4.1"
