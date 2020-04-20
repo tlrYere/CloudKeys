@@ -4,7 +4,8 @@
   "description": "a completely cloud based password manager",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "author": "Tyler Yere",
   "license": "ISC",
@@ -16,6 +17,8 @@
     "@aws-crypto/client-node": "^1.0.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "json-loader": "^0.5.7",
+    "webpack": "^4.42.1"
   }
 }
