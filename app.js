@@ -3,6 +3,10 @@ var ejs = require('ejs').__express;
 var app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var AWS = require('aws-sdk');
+
+//set credentials and region
+//AWS.config.update({region: process.env.region, credentials: {}})
 
 //Create application/x-www-forn-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({extended: false})

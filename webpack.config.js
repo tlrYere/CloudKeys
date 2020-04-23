@@ -3,17 +3,20 @@ const webpack = require('webpack')
 const path = require('path')
 const {defaultProvider} = require('@aws-sdk/credential-provider-node')
 
-module.exports = {
-	entry: './src/browser-script.js',
+module.exports = (async () => ({
+	entry: 'browser-script.js',
 	output: {
 		path: path.resolve(__dirname),
-		filename: 'browser-script-bundle.js'
+		filename: 'browser-script-bundle.js',
+		library: 'test'
 	},
 	module: {
-		loaders: [
+		rules: {
+			test: /browser-script.js/,
+		},
+		use: [
 			{
-				test: /\.json$/,
-				loaders: ['json']
+				loader: 'json'
 			}
 		]
 	},
@@ -22,4 +25,4 @@ module.exports = {
 			credentials: JSON.stringify(await defaultProvider()())
 		})
 	]
-}
+}))()

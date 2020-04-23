@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src = "browser-script-bundle.js"></script>
 	</head>
 	<body>
 		<title>Cloud Keys</title>
@@ -29,8 +30,8 @@
 						url: '/process_post',
 						type: 'POST',
 						data: {
-							"Domain": $('#domain_name_post').val(),
-							"Password": $('#password_post').val()
+							"Domain": test.encryptKMS($('#domain_name_post').val()),
+							"Password": test.encryptKMS($('#password_post').val())
 						},
 						success: (res) => {
 							console.log(res);

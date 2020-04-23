@@ -10,15 +10,18 @@
   "author": "Tyler Yere",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "webpack-cli": "^3.3.11",
+    "@aws-sdk/credential-provider-node": "0.1.0-preview.2",
+    "json-loader": "^0.5.7",
+    "webpack": "^4.42.1"
   },
   "dependencies": {
     "@aws-crypto/client-browser": "^1.0.5",
     "@aws-crypto/client-node": "^1.0.4",
+    "aws-sdk": "^2.659.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
-    "json-loader": "^0.5.7",
-    "webpack": "^4.42.1"
+    "jquery": "^3.4.1"
   }
 }
