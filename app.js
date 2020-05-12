@@ -5,10 +5,10 @@ var bodyParser = require('body-parser');
 var AWS = require('aws-sdk');
 
 //set credentials and region
-//AWS.config.update({region: process.env.region, credentials: {}})
+AWS.config.update({region: 'us-east-1'});
 
 var tableName = "domain-passwords";
-var docClient = new AWS.DynamoDB.DocumentClient();
+var ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
 //Create application/x-www-forn-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({extended: false})
@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
 app.post('/process_post', urlencodedParser, (req,res) => {
 	//Prepare output in JSON format
 	var response = {
-		Domain:req.body.Domain,
-		Password:req.body.Password
+		"Domain":{S: req.body.Domain},
+		"Password":{S: req.body.Password}
 	};
 	console.log(response);
 	
@@ -37,7 +37,7 @@ app.post('/process_post', urlencodedParser, (req,res) => {
 		TableName: tableName,
 		Item: response
 	};
-	docClient.put(params, function(err, data) {
+	ddb.putItem(params, function(err, data) {
     if (err) {
         console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
     } else {
@@ -57,7 +57,7 @@ app.get('/process_get', (req,res) => {
 			"Domain": {"S": req.query.Domain}
 		}
 	};
-	docClient.query(params, function(err, data) {
+	ddb.getItem(params, function(err, data) {
 		if (err) res.end("Password not found for specified domain");
 		else res.end(JSON.stringify(data));
 	})
