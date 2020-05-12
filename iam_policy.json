@@ -1,0 +1,14 @@
+{
+    "Version": "5/10/2020",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                  "dynamodb:*",
+                  "ec2:*",
+                  "cloudformation:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}

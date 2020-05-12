@@ -30,8 +30,8 @@
 						url: '/process_post',
 						type: 'POST',
 						data: {
-							"Domain": test.encryptKMS($('#domain_name_post').val()),
-							"Password": test.encryptKMS($('#password_post').val())
+							"Domain": $('#domain_name_post').val(),
+							"Password": $('#password_post').val()
 						},
 						success: (res) => {
 							console.log(res);
