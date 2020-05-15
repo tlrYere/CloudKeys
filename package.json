@@ -11,10 +11,13 @@
   "dependencies": {
     "@aws-crypto/client-browser": "latest",
     "@aws-crypto/client-node": "latest",
+    "@aws-sdk/util-base64-browser": "0.1.0-preview.1",
     "aws-sdk": "latest",
     "ejs": "latest",
     "express": "latest",
     "jquery": "latest",
-    "json-loader": "latest"
+    "json-loader": "latest",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7"
   }
 }

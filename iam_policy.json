@@ -6,7 +6,8 @@
             "Action": [
                   "dynamodb:*",
                   "ec2:*",
-                  "cloudformation:*"
+                  "cloudformation:*",
+                  "kms:*"
             ],
             "Resource": "*"
         }

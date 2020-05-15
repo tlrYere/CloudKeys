@@ -2,18 +2,17 @@
 <html>
 	<head>
 		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src = "browser-script-bundle.js"></script>
 	</head>
 	<body>
 		<title>Cloud Keys</title>
 
 		<h1>Cloud Keys: A completely Cloud-based Password Manager</h1>
-
 		<b> Input New Password</b> <br>
 		Domain: <input type = "text" id = "domain_name_post"> <br>
 		Password: <input type = "text" id = "password_post"> <br>
 		<button id = "post_submit">Submit</button> <br>
 		<div id = "post_output"></div>
+		<div id = "post_output_2"></div>
 		<br>
 
 		<b>Get Stored Password</b> <br>
@@ -42,8 +41,6 @@
 						}
 					});
 				});
-
-
 				$("#get_submit").click(() => {
 					$.ajax({
 						cache: false,
