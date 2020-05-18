@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 app.post('/process_post', urlencodedParser, (req,res) => {
 	//Encrypt password
 	var parameters = {
-		KeyId: "arn:aws:kms:us-east-1:228610466131:key/f375a90d-f790-44ec-b31e-cd2e64901bf3",
+		KeyId: "YOUR_AWS_KEY_ARN_HERE",
 		Plaintext: req.body.Password
 	}
 
